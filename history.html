@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>История Нижнекамска — интерактивная хроника</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+  --light-bg:#2a2a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Roboto,sans-serif;
+  background:var(--dark);
+  color:#fff;
+  line-height:1.5;
+}
+header{
+  background:linear-gradient(120deg,var(--blue),var(--green));
+  padding:40px 20px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+header h1{
+  font-size:2.2rem;
+  letter-spacing:1px;
+}
+section{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+}
+h2{
+  color:var(--yellow);
+  margin-bottom:20px;
+  font-size:1.8rem;
+  border-left:5px solid var(--green);
+  padding-left:15px;
+}
+.description-text{
+  font-size:1.1rem;
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:16px;
+  margin-bottom:40px;
+  line-height:1.6;
+}
+/* Стили для интерактивной временной шкалы */
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-bottom:30px;
+}
+.period-btn{
+  background:var(--light-bg);
+  border:none;
+  border-left:4px solid var(--green);
+  text-align:left;
+  padding:18px 22px;
+  font-size:1.2rem;
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  transition:all 0.25s ease;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:inherit;
+  width:100%;
+}
+.period-btn:hover{
+  background:#3a3a3a;
+  border-left-width:8px;
+  transform:translateX(5px);
+}
+.period-btn.active{
+  background:rgba(22,119,179,0.3);
+  border-left-color:var(--yellow);
+  box-shadow:0 0 0 1px var(--yellow);
+}
+.period-arrow{
+  font-size:1.3rem;
+  transition:transform 0.2s;
+}
+.period-btn.active .period-arrow{
+  transform:rotate(90deg);
+}
+/* Панель с подробной информацией */
+.period-detail{
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(4px);
+  border-radius:16px;
+  margin-top:-8px;
+  margin-bottom:20px;
+  padding:0 20px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease-out, padding 0.3s ease, margin 0.3s;
+  border-left:2px solid var(--yellow);
+}
+.period-detail.show{
+  max-height:400px;   /* достаточно для любого текста */
+  padding:20px;
+  margin-top:5px;
+  margin-bottom:25px;
+}
+.period-detail p{
+  margin:0;
+  line-height:1.6;
+  font-size:1rem;
+  color:#f0f0f0;
+}
+.detail-fact{
+  margin-top:12px;
+  padding-top:8px;
+  border-top:1px dashed var(--blue);
+  font-style:italic;
+  color:var(--yellow);
+}
+img{
+  width:100%;
+  max-width:600px;
+  display:block;
+  margin:30px auto;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.5);
+  border:1px solid rgba(255,255,255,0.1);
+}
+a.back{
+  display:inline-block;
+  margin-top:40px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  padding:12px 28px;
+  border-radius:40px;
+  font-weight:bold;
+  transition:0.2s;
+}
+a.back:hover{
+  background:var(--blue);
+  transform:scale(1.02);
+}
+@media (max-width:700px){
+  .period-btn{
+    padding:14px 18px;
+    font-size:1rem;
+  }
+  .period-detail.show{
+    padding:15px;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1> НК - 60</h1>
+</header>
+
+<section>
+<h2>О городе</h2>
+<p class="description-text">Нижнекамск — один из крупнейших промышленных центров Татарстана, город химиков, нефтепереработчиков и строителей. Основан в 1961 году как молодой город при нефтехимическом комбинате. Сегодня это современный город с развитой инфраструктурой, парками и уникальной атмосферой.</p>
+
+<img src="flag.png" alt="Флаг Нижнекамска" onerror="this.style.display='none'">
+
+<h2>Историческая хроника Нижнекамска</h2>
+<p style="margin-bottom:20px; opacity:0.9;">Нажмите на любой период, чтобы узнать подробности:</p>
+
+<div class="timeline">
+  <button class="period-btn" data-period="1960">
+    <span>🚀 1960-е — основание города</span>
+    <span class="period-arrow">▶</span>
+  </button>
+  <div id="detail-1960" class="period-detail">
+<p><strong>Как всё начиналось:</strong> 25 августа 1961 года — дата официального основания рабочего посёлка Нижнекамский. Первый камень в фундамент будущего города заложили комсомольцы-энтузиасты. Строительство Нижнекамского нефтехимического комбината (НКНК) стало всесоюзной ударной стройкой. Первые дома вырастали прямо в чистом поле, а к концу десятилетия здесь уже жили тысячи молодых специалистов.</p>
+    <div class="detail-fact">✨ Интересный факт: в 1966 году посёлок получил статус города, а его население перевалило за 30 тысяч человек.</div>
+  </div>
+
+  <button class="period-btn" data-period="1970">
+    <span>🏗️ 1970-е — активное строительство и развитие</span>
+    <span class="period-arrow">▶</span>
+  </button>
+  <div id="detail-1970" class="period-detail">
+    <p><strong>Эпоха гигантов:</strong> В 70-е годы Нижнекамск превратился в крупнейший промышленный узел. Запущены мощности «Нижнекамскнефтехима», построены шинный завод, ТЭЦ-1 и ТЭЦ-2. Город активно застраивался микрорайонами: появились проспекты Химиков, Строителей, Дружбы. Открылись дворцы культуры, кинотеатр «Джалиль», стадион. В 1975 году численность жителей превысила 100 тысяч.</p>
+    <div class="detail-fact">✨ Интересный факт: именно в 1970-х Нижнекамск стал известен как «город молодожёнов» — сюда приезжали строить будущее тысячи молодых семей со всего СССР.</div>
+  </div>
+
+  <button class="period-btn" data-period="1990">
+    <span>🔄 1990-е — период перемен</span>
+    <span class="period-arrow">▶</span>
+  </button>
+  <div id="detail-1990" class="period-detail">
+    <p><strong>Испытание временем:</strong> 90-е годы стали для города серьёзным вызовом. Промышленность переживала кризис, но градообразующие предприятия выстояли благодаря переориентации на рыночные рельсы. В это время Нижнекамск получил новый импульс: началось развитие малого бизнеса, построены первые торговые центры, а в 1995 году город посетил Минтимер Шаймиев, поддержав программу модернизации нефтехимии.</p>
+    <div class="detail-fact">✨ Интересный факт: несмотря на трудности, в 1997 году Нижнекамск занял первое место в республике по вводу жилья на душу населения.</div>
+  </div>
+
+  <button class="period-btn" data-period="2000">
+    <span>📈 2000-е — рост и модернизация</span>
+    <span class="period-arrow">▶</span>
+  </button>
+  <div id="detail-2000" class="period-detail">
+    <p><strong>Технологический рывок:</strong> В новом тысячелетии Нижнекамск вошёл в число лидеров российской нефтехимии. Реконструированы заводы, запущено производство полипропилена, полиэтилена. Город расцвёл: появились новые школы, спортивные комплексы, набережная Камы. В 2005 году торжественно отметили 40-летие города. Активно велось дорожное строительство, открылся парк «Солнечная поляна».</p>
+    <div class="detail-fact">✨ Интересный факт: в 2007 году Нижнекамск признан самым благоустроенным городом Татарстана.</div>
+  </div>
+
+  <button class="period-btn" data-period="today">
+    <span>🌟 Сегодня — современный и развивающийся город</span>
+    <span class="period-arrow">▶</span>
+  </button>
+  <div id="detail-today" class="period-detail">
+    <p><strong>Город возможностей:</strong> Сегодня Нижнекамск — это более 240 тысяч жителей, мощный промышленный кластер (ПАО «Нижнекамскнефтехим», ТАНЕКО, шинный завод и др.). Город динамично развивается: строятся жилые комплексы, открыты IT-лицей, обновлённый городской пляж, лыжно-биатлонный комплекс. В 2021 году Нижнекамск отпраздновал 60-летний юбилей. В планах — создание современной агломерации и дальнейшее улучшение экологии.</p>
+    <div class="detail-fact">✨ Интересный факт: Нижнекамск — один из немногих городов России, где сохраняется естественный прирост населения, и ежегодно открываются новые общественные пространства.</div>
+  </div>
+</div>
+
+<a class="back" href="index.html">← На главную</a>
+</section>
+
+<script>
+  // Получаем все кнопки периодов
+  const buttons = document.querySelectorAll('.period-btn');
+  
+  // Функция для закрытия всех деталей и снятия активного класса с кнопок
+  function closeAllDetails() {
+    document.querySelectorAll('.period-detail').
+forEach(detail => {
+      detail.classList.remove('show');
+    });
+    document.querySelectorAll('.period-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+  }
+  
+  // Обработчик клика по кнопке
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const period = btn.getAttribute('data-period');
+      const targetDetail = document.getElementById(`detail-${period}`);
+      
+      // Если текущая деталь уже открыта — закрываем её
+      if (targetDetail.classList.contains('show')) {
+        targetDetail.classList.remove('show');
+        btn.classList.remove('active');
+      } else {
+        // Закрываем все остальные и открываем текущую
+        closeAllDetails();
+        targetDetail.classList.add('show');
+        btn.classList.add('active');
+      }
+    });
+  });
+  
+  // Опционально: если нужно, чтобы первый элемент (1960-е) был открыт по умолчанию, раскомментируйте строки:
+  // (сейчас все закрыты — пользователь сам выбирает, но можно показать приветственный блок)
+  // По желанию, можно открыть первый период для приветствия:
+  /*
+  const firstBtn = document.querySelector('.period-btn');
+  if(firstBtn){
+    firstBtn.click();
+  }
+  */
+  // но лучше дать пользователю самому исследовать — оставляем всё закрытым.
+</script>
+</body>
+</html>

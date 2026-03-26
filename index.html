@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>История Нижнекамска</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:#000;color:#fff;}
+.hero{
+  height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+    url('city.jpg') center/cover no-repeat;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+}
+h1{
+  font-size:64px;
+  background:linear-gradient(90deg,var(--yellow),#fff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.btn{
+  margin-top:40px;
+  padding:18px 36px;
+  background:var(--yellow);
+  color:#000;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>История Нижнекамска</h1>
+  <a href="history.html" class="btn">Посмотреть историю</a>
+</div>
+</body>
+</html>
