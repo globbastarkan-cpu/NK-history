@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>История Нижнекамска — интерактивная хроника</title>
 <style>
 :root{
@@ -14,153 +14,151 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:'Segoe UI',Roboto,sans-serif;
+  font-family:'Segoe UI',Roboto,-apple-system,sans-serif;
   background:var(--dark);
   color:#fff;
   line-height:1.5;
 }
 header{
   background:linear-gradient(120deg,var(--blue),var(--green));
-  padding:40px 20px;
+  padding:clamp(1.5rem, 5vw, 2.5rem) 1rem;
   text-align:center;
-  box-shadow:0 4px 15px rgba(0,0,0,0.3);
 }
 header h1{
-  font-size:2.2rem;
+  font-size:clamp(1.5rem, 6vw, 2.2rem);
   letter-spacing:1px;
 }
 section{
   max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
+  margin:0 auto;
+  padding:clamp(1.5rem, 5vw, 3rem) 1rem;
 }
 h2{
   color:var(--yellow);
-  margin-bottom:20px;
-  font-size:1.8rem;
+  margin-bottom:1rem;
+  font-size:clamp(1.4rem, 5vw, 1.8rem);
   border-left:5px solid var(--green);
-  padding-left:15px;
+  padding-left:0.8rem;
 }
 .description-text{
-  font-size:1.1rem;
+  font-size:clamp(0.95rem, 3.5vw, 1.1rem);
   background:rgba(255,255,255,0.05);
-  padding:20px;
-  border-radius:16px;
-  margin-bottom:40px;
-  line-height:1.6;
+  padding:1rem;
+  border-radius:20px;
+  margin-bottom:1.8rem;
+  line-height:1.5;
 }
-/* Стили для интерактивной временной шкалы */
 .timeline{
   display:flex;
   flex-direction:column;
-  gap:15px;
-  margin-bottom:30px;
+  gap:12px;
+  margin-bottom:20px;
 }
 .period-btn{
   background:var(--light-bg);
   border:none;
-  border-left:4px solid var(--green);
+  border-left:5px solid var(--green);
   text-align:left;
-  padding:18px 22px;
-  font-size:1.2rem;
+  padding:clamp(0.9rem, 4vw, 1.2rem) 1rem;
+  font-size:clamp(1rem, 4vw, 1.2rem);
   font-weight:bold;
   color:#fff;
   cursor:pointer;
-  transition:all 0.25s ease;
-  border-radius:12px;
+  border-radius:16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  font-family:inherit;
   width:100%;
+  transition:all 0.2s;
+  touch-action:manipulation;
 }
-.period-btn:hover{
+.period-btn:active{
   background:#3a3a3a;
-  border-left-width:8px;
-  transform:translateX(5px);
+  transform:translateX(3px);
 }
 .period-btn.active{
-  background:rgba(22,119,179,0.3);
+  background:rgba(22,119,179,0.4);
   border-left-color:var(--yellow);
-  box-shadow:0 0 0 1px var(--yellow);
 }
 .period-arrow{
-  font-size:1.3rem;
+  font-size:1.2rem;
   transition:transform 0.2s;
 }
 .period-btn.active .period-arrow{
   transform:rotate(90deg);
 }
-/* Панель с подробной информацией */
 .period-detail{
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(4px);
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(3px);
   border-radius:16px;
-  margin-top:-8px;
-  margin-bottom:20px;
-  padding:0 20px;
+  margin-top:0;
+  margin-bottom:0;
+  padding:0 1rem;
   max-height:0;
   overflow:hidden;
-  transition:max-height 0.5s ease-out, padding 0.3s ease, margin 0.3s;
+  transition:max-height 0.4s ease-out, padding 0.2s ease, margin 0.2s;
   border-left:2px solid var(--yellow);
 }
 .period-detail.show{
-  max-height:400px;   /* достаточно для любого текста */
-  padding:20px;
+  max-height:500px;
+  padding:1rem;
   margin-top:5px;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 .period-detail p{
-  margin:0;
-  line-height:1.6;
-  font-size:1rem;
-  color:#f0f0f0;
+  font-size:clamp(0.9rem, 3.5vw, 1rem);
+  margin:0 0 0.8rem 0;
+  line-height:1.5;
 }
 .detail-fact{
-  margin-top:12px;
-  padding-top:8px;
+  margin-top:0.8rem;
+  padding-top:0.8rem;
   border-top:1px dashed var(--blue);
   font-style:italic;
   color:var(--yellow);
+  font-size:0.9rem;
 }
 img{
   width:100%;
-  max-width:600px;
+  max-width:400px;
+  height:auto;
   display:block;
-  margin:30px auto;
-  border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.5);
-  border:1px solid rgba(255,255,255,0.1);
+  margin:1.5rem auto;
+  border-radius:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
 }
 a.back{
   display:inline-block;
-  margin-top:40px;
+  margin-top:2rem;
   background:var(--green);
   color:white;
   text-decoration:none;
   padding:12px 28px;
   border-radius:40px;
   font-weight:bold;
+  text-align:center;
   transition:0.2s;
+  touch-action:manipulation;
 }
-a.back:hover{
+a.back:active{
+  transform:scale(0.96);
   background:var(--blue);
-  transform:scale(1.02);
 }
-@media (max-width:700px){
-  .period-btn{
-    padding:14px 18px;
-    font-size:1rem;
+@media (min-width:768px){
+  .period-btn:hover{
+    background:#3a3a3a;
+    transform:translateX(5px);
   }
-  .period-detail.show{
-    padding:15px;
+  a.back:hover{
+    background:var(--blue);
+    transform:scale(1.02);
   }
 }
 </style>
 </head>
 <body>
 <header>
-  <h1> НК - 60</h1>
+  <h1>📜 История Нижнекамска</h1>
 </header>
 
 <section>
@@ -169,21 +167,20 @@ a.back:hover{
 
 <img src="flag.png" alt="Флаг Нижнекамска" onerror="this.style.display='none'">
 
-<h2>Историческая хроника Нижнекамска</h2>
-<p style="margin-bottom:20px; opacity:0.9;">Нажмите на любой период, чтобы узнать подробности:</p>
-
+<h2> НК-60</h2>
+<p style="margin-bottom:1rem; opacity:0.9; font-size:0.95rem;">Нажмите на любой период, чтобы узнать подробности:</p>
 <div class="timeline">
   <button class="period-btn" data-period="1960">
-    <span>🚀 1960-е — основание города</span>
+    <span> 1960-е — основание города</span>
     <span class="period-arrow">▶</span>
   </button>
   <div id="detail-1960" class="period-detail">
-<p><strong>Как всё начиналось:</strong> 25 августа 1961 года — дата официального основания рабочего посёлка Нижнекамский. Первый камень в фундамент будущего города заложили комсомольцы-энтузиасты. Строительство Нижнекамского нефтехимического комбината (НКНК) стало всесоюзной ударной стройкой. Первые дома вырастали прямо в чистом поле, а к концу десятилетия здесь уже жили тысячи молодых специалистов.</p>
+    <p><strong>Как всё начиналось:</strong> 25 августа 1961 года — дата официального основания рабочего посёлка Нижнекамский. Первый камень в фундамент будущего города заложили комсомольцы-энтузиасты. Строительство Нижнекамского нефтехимического комбината (НКНК) стало всесоюзной ударной стройкой. Первые дома вырастали прямо в чистом поле, а к концу десятилетия здесь уже жили тысячи молодых специалистов.</p>
     <div class="detail-fact">✨ Интересный факт: в 1966 году посёлок получил статус города, а его население перевалило за 30 тысяч человек.</div>
   </div>
 
   <button class="period-btn" data-period="1970">
-    <span>🏗️ 1970-е — активное строительство и развитие</span>
+    <span> 1970-е — активное строительство и развитие</span>
     <span class="period-arrow">▶</span>
   </button>
   <div id="detail-1970" class="period-detail">
@@ -192,7 +189,7 @@ a.back:hover{
   </div>
 
   <button class="period-btn" data-period="1990">
-    <span>🔄 1990-е — период перемен</span>
+    <span> 1990-е — период перемен</span>
     <span class="period-arrow">▶</span>
   </button>
   <div id="detail-1990" class="period-detail">
@@ -201,7 +198,7 @@ a.back:hover{
   </div>
 
   <button class="period-btn" data-period="2000">
-    <span>📈 2000-е — рост и модернизация</span>
+    <span> 2000-е — рост и модернизация</span>
     <span class="period-arrow">▶</span>
   </button>
   <div id="detail-2000" class="period-detail">
@@ -210,7 +207,7 @@ a.back:hover{
   </div>
 
   <button class="period-btn" data-period="today">
-    <span>🌟 Сегодня — современный и развивающийся город</span>
+    <span> Сегодня — современный и развивающийся город</span>
     <span class="period-arrow">▶</span>
   </button>
   <div id="detail-today" class="period-detail">
@@ -221,52 +218,27 @@ a.back:hover{
 
 <a class="back" href="index.html">← На главную</a>
 </section>
-
 <script>
-  // Получаем все кнопки периодов
   const buttons = document.querySelectorAll('.period-btn');
-  
-  // Функция для закрытия всех деталей и снятия активного класса с кнопок
   function closeAllDetails() {
-    document.querySelectorAll('.period-detail').
-forEach(detail => {
-      detail.classList.remove('show');
-    });
-    document.querySelectorAll('.period-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
+    document.querySelectorAll('.period-detail').forEach(detail => detail.classList.remove('show'));
+    document.querySelectorAll('.period-btn').forEach(btn => btn.classList.remove('active'));
   }
-  
-  // Обработчик клика по кнопке
   buttons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const period = btn.getAttribute('data-period');
-      const targetDetail = document.getElementById(`detail-${period}`);
-      
-      // Если текущая деталь уже открыта — закрываем её
+      const targetDetail = document.getElementById(detail-${period});
       if (targetDetail.classList.contains('show')) {
         targetDetail.classList.remove('show');
         btn.classList.remove('active');
       } else {
-        // Закрываем все остальные и открываем текущую
         closeAllDetails();
         targetDetail.classList.add('show');
         btn.classList.add('active');
       }
     });
   });
-  
-  // Опционально: если нужно, чтобы первый элемент (1960-е) был открыт по умолчанию, раскомментируйте строки:
-  // (сейчас все закрыты — пользователь сам выбирает, но можно показать приветственный блок)
-  // По желанию, можно открыть первый период для приветствия:
-  /*
-  const firstBtn = document.querySelector('.period-btn');
-  if(firstBtn){
-    firstBtn.click();
-  }
-  */
-  // но лучше дать пользователю самому исследовать — оставляем всё закрытым.
 </script>
 </body>
 </html>
