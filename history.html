@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>История Нижнекамска — хроника</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+  --light-bg:#2a2a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Roboto,sans-serif;
+  background:var(--dark);
+  color:#fff;
+  line-height:1.5;
+}
+header{
+  background:linear-gradient(120deg,var(--blue),var(--green));
+  padding:clamp(1.5rem, 5vw, 2.5rem) 1rem;
+  text-align:center;
+}
+h1{font-size:clamp(1.5rem, 6vw, 2.2rem);}
+section{
+  max-width:1000px;
+  margin:0 auto;
+  padding:clamp(1.5rem, 5vw, 3rem) 1rem;
+}
+h2{
+  color:var(--yellow);
+  margin-bottom:1rem;
+  font-size:clamp(1.4rem, 5vw, 1.8rem);
+  border-left:5px solid var(--green);
+  padding-left:0.8rem;
+}
+.description-text{
+  background:rgba(255,255,255,0.05);
+  padding:1rem;
+  border-radius:20px;
+  margin-bottom:1.8rem;
+}
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:20px 0;
+}
+.period-btn{
+  background:var(--light-bg);
+  border:none;
+  border-left:5px solid var(--green);
+  text-align:left;
+  padding:clamp(0.9rem, 4vw, 1.2rem) 1rem;
+  font-size:clamp(1rem, 4vw, 1.2rem);
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  border-radius:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  transition:0.2s;
+}
+.period-btn:active{background:#3a3a3a; transform:translateX(3px);}
+.period-arrow{font-size:1.2rem; transition:transform 0.2s;}
+.period-detail{
+  background:rgba(0,0,0,0.65);
+  border-radius:16px;
+  padding:0 1rem;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease-out, padding 0.2s;
+  border-left:2px solid var(--yellow);
+  margin-bottom:0;
+}
+.period-detail.show{
+  max-height:500px;
+  padding:1rem;
+  margin-top:5px;
+  margin-bottom:20px;
+}
+.detail-fact{
+  margin-top:0.8rem;
+  padding-top:0.8rem;
+  border-top:1px dashed var(--blue);
+  font-style:italic;
+  color:var(--yellow);
+}
+img{
+  width:100%;
+  max-width:400px;
+  display:block;
+  margin:1.5rem auto;
+  border-radius:16px;
+}
+a.back{
+  display:inline-block;
+  margin-top:2rem;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  padding:12px 28px;
+  border-radius:40px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+<header><h1>📜 Нижнекамск: страницы истории</h1></header>
+
+<section>
+<h2>О городе</h2>
+<p class="description-text">Нижнекамск — один из крупнейших промышленных центров Татарстана, город химиков, нефтепереработчиков и строителей. Основан в 1961 году как молодой город при нефтехимическом комбинате. Сегодня это современный мегаполис с развитой инфраструктурой, парками и уникальной атмосферой.</p>
+
+<img src="flag.png" alt="Флаг Нижнекамска" onerror="this.style.display='none'">
+
+<h2>📅 Интерактивная хроника</h2>
+<p style="margin-bottom:1rem;">Нажмите на любой период, чтобы узнать подробности:</p>
+
+<div class="timeline">
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1960')">
+      <span>🚀 1960-е — основание города</span>
+      <span class="period-arrow" id="arrow-1960">▶</span>
+    </button>
+    <div id="detail-1960" class="period-detail">
+      <p><strong>Как всё начиналось:</strong> 25 августа 1961 года — дата официального основания рабочего посёлка Нижнекамский. Первый камень в фундамент будущего города заложили комсомольцы-энтузиасты. Строительство Нижнекамского нефтехимического комбината (НКНК) стало всесоюзной ударной стройкой. Первые дома вырастали прямо в чистом поле, а к концу десятилетия здесь уже жили тысячи молодых специалистов.</p>
+      <div class="detail-fact">✨ Интересный факт: в 1966 году посёлок получил статус города, а его население перевалило за 30 тысяч человек.</div>
+    </div>
+  </div>
+
+<div>
+    <button class="period-btn" onclick="togglePeriod('1970')">
+      <span>🏗️ 1970-е — активное строительство и развитие</span>
+      <span class="period-arrow" id="arrow-1970">▶</span>
+    </button>
+    <div id="detail-1970" class="period-detail">
+      <p><strong>Эпоха гигантов:</strong> В 70-е годы Нижнекамск превратился в крупнейший промышленный узел. Запущены мощности «Нижнекамскнефтехима», построены шинный завод, ТЭЦ-1 и ТЭЦ-2. Город активно застраивался микрорайонами: появились проспекты Химиков, Строителей, Дружбы. Открылись дворцы культуры, кинотеатр «Джалиль», стадион. В 1975 году численность жителей превысила 100 тысяч.</p>
+      <div class="detail-fact">✨ Интересный факт: именно в 1970-х Нижнекамск стал известен как «город молодожёнов» — сюда приезжали строить будущее тысячи молодых семей со всего СССР.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1990')">
+      <span>🔄 1990-е — период перемен</span>
+      <span class="period-arrow" id="arrow-1990">▶</span>
+    </button>
+    <div id="detail-1990" class="period-detail">
+      <p><strong>Испытание временем:</strong> 90-е годы стали для города серьёзным вызовом. Промышленность переживала кризис, но градообразующие предприятия выстояли благодаря переориентации на рыночные рельсы. В это время Нижнекамск получил новый импульс: началось развитие малого бизнеса, построены первые торговые центры, а в 1995 году город посетил Минтимер Шаймиев, поддержав программу модернизации нефтехимии.</p>
+      <div class="detail-fact">✨ Интересный факт: несмотря на трудности, в 1997 году Нижнекамск занял первое место в республике по вводу жилья на душу населения.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('2000')">
+      <span>📈 2000-е — рост и модернизация</span>
+      <span class="period-arrow" id="arrow-2000">▶</span>
+    </button>
+    <div id="detail-2000" class="period-detail">
+      <p><strong>Технологический рывок:</strong> В новом тысячелетии Нижнекамск вошёл в число лидеров российской нефтехимии. Реконструированы заводы, запущено производство полипропилена, полиэтилена. Город расцвёл: появились новые школы, спортивные комплексы, набережная Камы. В 2005 году торжественно отметили 40-летие города. Активно велось дорожное строительство, открылся парк «Солнечная поляна».</p>
+      <div class="detail-fact">✨ Интересный факт: в 2007 году Нижнекамск признан самым благоустроенным городом Татарстана.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('today')">
+      <span>🌟 Сегодня — современный и развивающийся город</span>
+      <span class="period-arrow" id="arrow-today">▶</span>
+    </button>
+    <div id="detail-today" class="period-detail">
+      <p><strong>Город возможностей:</strong> Сегодня Нижнекамск — это более 240 тысяч жителей, мощный промышленный кластер (ПАО «Нижнекамскнефтехим», ТАНЕКО, шинный завод и др.). Город динамично развивается: строятся жилые комплексы, открыты IT-лицей, обновлённый городской пляж, лыжно-биатлонный комплекс. В 2021 году Нижнекамск отпраздновал 60-летний юбилей. В планах — создание современной агломерации и дальнейшее улучшение экологии.</p>
+      <div class="detail-fact">✨ Интересный факт: Нижнекамск — один из немногих городов России, где сохраняется естественный прирост населения, и ежегодно открываются новые общественные пространства.</div>
+    </div>
+  </div>
+</div>
+
+<a class="back" href="index.html">← На главную</a>
+</section>
+
+<script>
+  // Простая и надёжная функция переключения
+  function togglePeriod(id) {
+    const detail = document.getElementById('detail-' + id);
+    const arrow = document.getElementById('arrow-' + id);
+    if (!detail || !arrow) return;
+    
+    if (detail.classList.contains('show')) {
+      detail.classList.remove('show');
+arrow.style.transform = 'rotate(0deg)';
+    } else {
+      // Закрываем все другие открытые блоки
+      document.querySelectorAll('.period-detail').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.period-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+      // Открываем текущий
+      detail.classList.add('show');
+      arrow.style.transform = 'rotate(90deg)';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>История Нижнекамска</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Roboto,-apple-system,sans-serif;
+  background:#000;
+  color:#fff;
+  min-height:100vh;
+}
+.hero{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+    url('city.jpg') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+h1{
+  font-size:clamp(2rem, 10vw, 4rem);
+  background:linear-gradient(90deg,var(--yellow),#fff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom:20px;
+}
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 32px;
+  background:var(--yellow);
+  color:#000;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:1.2rem;
+  transition:transform 0.2s, background 0.2s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  min-width:200px;
+  text-align:center;
+}
+.btn:active{
+  transform:scale(0.97);
+}
+@media (hover:hover){
+  .btn:hover{
+    transform:scale(1.05);
+    background:#ffea2e;
+  }
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>История Нижнекамска</h1>
+  <a href="history.html" class="btn">Посмотреть историю</a>
+</div>
+</body>
+</html>
