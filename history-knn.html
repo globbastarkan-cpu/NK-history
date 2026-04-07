@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>История КНН — колледж нефтехимии</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+  --burgundy:#8B0000;
+  --light-bg:#2a2a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Roboto,sans-serif;
+  background:var(--dark);
+  color:#fff;
+  line-height:1.5;
+}
+header{
+  background:var(--burgundy);
+  padding:clamp(1.5rem, 5vw, 2.5rem) 1rem;
+  text-align:center;
+}
+h1{font-size:clamp(1.5rem, 6vw, 2.2rem);}
+section{
+  max-width:1000px;
+  margin:0 auto;
+  padding:clamp(1.5rem, 5vw, 3rem) 1rem;
+}
+h2{
+  color:var(--yellow);
+  margin-bottom:1rem;
+  font-size:clamp(1.4rem, 5vw, 1.8rem);
+  border-left:5px solid var(--burgundy);
+  padding-left:0.8rem;
+}
+.description-text{
+  background:rgba(255,255,255,0.05);
+  padding:1rem;
+  border-radius:20px;
+  margin-bottom:1.8rem;
+}
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:20px 0;
+}
+.period-btn{
+  background:var(--light-bg);
+  border:none;
+  border-left:5px solid var(--burgundy);
+  text-align:left;
+  padding:clamp(0.9rem, 4vw, 1.2rem) 1rem;
+  font-size:clamp(1rem, 4vw, 1.2rem);
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  border-radius:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  transition:0.2s;
+}
+.period-btn:active{background:#3a3a3a; transform:translateX(3px);}
+.period-arrow{font-size:1.2rem; transition:transform 0.2s;}
+.period-detail{
+  background:rgba(0,0,0,0.65);
+  border-radius:16px;
+  padding:0 1rem;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease-out, padding 0.2s;
+  border-left:2px solid var(--burgundy);
+  margin-bottom:0;
+}
+.period-detail.show{
+  max-height:500px;
+  padding:1rem;
+  margin-top:5px;
+  margin-bottom:20px;
+}
+.detail-fact{
+  margin-top:0.8rem;
+  padding-top:0.8rem;
+  border-top:1px dashed var(--burgundy);
+  font-style:italic;
+  color:var(--yellow);
+}
+a.back{
+  display:inline-block;
+  margin-top:2rem;
+  background:var(--burgundy);
+  color:white;
+  text-decoration:none;
+  padding:12px 28px;
+  border-radius:40px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+<header><h1>🏛️ История КНН<br><small>Колледж нефтехимии и нефтепереработки им. Н.В. Лемаева</small></h1></header>
+
+<section>
+<h2>О колледже</h2>
+<p class="description-text">Колледж нефтехимии и нефтепереработки (КНН) — ведущее учебное заведение Татарстана, готовящее кадры для нефтехимической отрасли. Основан в 1960-х годах для обеспечения Нижнекамского нефтехимического комбината квалифицированными рабочими и техниками. Носит имя выдающегося организатора производства Николая Васильевича Лемаева.</p>
+
+<h2>📅 Этапы развития колледжа</h2>
+<p style="margin-bottom:1rem;">Нажмите на период, чтобы узнать подробности:</p>
+
+<div class="timeline">
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1963')">
+      <span>📖 1963 — Основание училища</span>
+      <span class="period-arrow" id="arrow-1963">▶</span>
+    </button>
+    <div id="detail-1963" class="period-detail">
+      <p><strong>Первые шаги:</strong> В 1963 году при Нижнекамском нефтехимическом комбинате открыто ГПТУ-94 (позже ставшее КНН). Первый набор — 300 учащихся. Готовили аппаратчиков, слесарей, лаборантов. Занятия проходили в приспособленных помещениях, но энтузиазм был огромный.</p>
+      <div class="detail-fact">✨ Интересный факт: первый директор — В.И. Панкратов, ветеран Великой Отечественной войны.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1980')">
+      <span>🏗️ 1980-е — Становление и признание</span>
+      <span class="period-arrow" id="arrow-1980">▶</span>
+    </button>
+    <div id="detail-1980" class="period-detail">
+      <p><strong>Расцвет ПТУ:</strong> Построен новый учебный корпус, мастерские, общежитие. Училище становится базовым для подготовки кадров для НКНХ и шинного завода. В 1986 году присвоен статус «Среднее профессионально-техническое училище № 94». Выпускники работают на всех ключевых производствах.</p>
+      <div class="detail-fact">✨ Интересный факт: училище награждено переходящим Красным знаменем ЦК ВЛКСМ за шефство над стройками.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1995')">
+      <span>🔄 1995 — Реформирование в колледж</span>
+      <span class="period-arrow" id="arrow-1995">▶</span>
+    </button>
+    <div id="detail-1995" class="period-detail">
+      <p><strong>Новый статус:</strong> В 1995 году училище преобразовано в «Нижнекамский нефтехимический колледж». Введены новые специальности: экономика, бухучет, автоматизация. Началось сотрудничество с КНИТУ (КХТИ). Колледж одним из первых в регионе перешел на многоуровневую подготовку.</p>
+      <div class="detail-fact">✨ Интересный факт: в 1998 году колледж возглавил З.Ф. Ганиев, заслуженный учитель РТ.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('2010')">
+      <span>📈 2010-е — Модернизация и инновации</span>
+      <span class="period-arrow" id="arrow-2010">▶</span>
+    </button>
+    <div id="detail-2010" class="period-detail">
+      <p><strong>Цифровая эпоха:</strong> Открыты лаборатории с современным оборудованием, внедрены дуальные программы обучения. Колледж становится региональным центром WorldSkills. В 2015 году присвоено имя Н.В. Лемаева — легендарного гендиректора НКНХ. Введены специальности «химическая технология», «нефтегазовое дело».</p>
+      <div class="detail-fact">✨ Интересный факт: студенты колледжа неоднократно побеждали в национальных чемпионатах WorldSkills.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('today')">
+      <span>🌟 Сегодня — Лидер среднего профобразования</span>
+      <span class="period-arrow" id="arrow-today">▶</span>
+    </button>
+    <div id="detail-today" class="period-detail">
+      <p><strong>Современный колледж:</strong> КНН — это 1500 студентов, 6 направлений подготовки, современные мастерские и цифровые лаборатории. Колледж является базовой площадкой для подготовки кадров для СИБУРа. Выпускники востребованы на предприятиях Нижнекамска, Казани и других городов.</p>
+      <div class="detail-fact">✨ Интересный факт: в 2023 году колледж вошел в топ-100 лучших организаций СПО России.</div>
+    </div>
+  </div>
+</div>
+
+<a class="back" href="index.html">← На главную</a>
+</section>
+
+<script>
+  function togglePeriod(id) {
+    const detail = document.getElementById('detail-' + id);
+    const arrow = document.getElementById('arrow-' + id);
+    if (!detail || !arrow) return;
+    if (detail.classList.contains('show')) {
+      detail.classList.remove('show');
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      document.querySelectorAll('.period-detail').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.period-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+      detail.classList.add('show');
+      arrow.style.transform = 'rotate(90deg)';
+    }
+  }
+</script>
+</body>
+</html>

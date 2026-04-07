@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>История НижнекамскНефтехим</title>
+<style>
+:root{
+  --blue:#1677b3;
+  --yellow:#f4e400;
+  --green:#0a8f3c;
+  --dark:#1a1a1a;
+  --teal:#20B2AA;
+  --light-bg:#2a2a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Roboto,sans-serif;
+  background:var(--dark);
+  color:#fff;
+  line-height:1.5;
+}
+header{
+  background:var(--teal);
+  padding:clamp(1.5rem, 5vw, 2.5rem) 1rem;
+  text-align:center;
+}
+h1{font-size:clamp(1.5rem, 6vw, 2.2rem);}
+section{
+  max-width:1000px;
+  margin:0 auto;
+  padding:clamp(1.5rem, 5vw, 3rem) 1rem;
+}
+h2{
+  color:var(--yellow);
+  margin-bottom:1rem;
+  font-size:clamp(1.4rem, 5vw, 1.8rem);
+  border-left:5px solid var(--teal);
+  padding-left:0.8rem;
+}
+.description-text{
+  background:rgba(255,255,255,0.05);
+  padding:1rem;
+  border-radius:20px;
+  margin-bottom:1.8rem;
+}
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:20px 0;
+}
+.period-btn{
+  background:var(--light-bg);
+  border:none;
+  border-left:5px solid var(--teal);
+  text-align:left;
+  padding:clamp(0.9rem, 4vw, 1.2rem) 1rem;
+  font-size:clamp(1rem, 4vw, 1.2rem);
+  font-weight:bold;
+  color:#fff;
+  cursor:pointer;
+  border-radius:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  transition:0.2s;
+}
+.period-btn:active{background:#3a3a3a; transform:translateX(3px);}
+.period-arrow{font-size:1.2rem; transition:transform 0.2s;}
+.period-detail{
+  background:rgba(0,0,0,0.65);
+  border-radius:16px;
+  padding:0 1rem;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease-out, padding 0.2s;
+  border-left:2px solid var(--teal);
+  margin-bottom:0;
+}
+.period-detail.show{
+  max-height:500px;
+  padding:1rem;
+  margin-top:5px;
+  margin-bottom:20px;
+}
+.detail-fact{
+  margin-top:0.8rem;
+  padding-top:0.8rem;
+  border-top:1px dashed var(--teal);
+  font-style:italic;
+  color:var(--yellow);
+}
+a.back{
+  display:inline-block;
+  margin-top:2rem;
+  background:var(--teal);
+  color:white;
+  text-decoration:none;
+  padding:12px 28px;
+  border-radius:40px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+<header><h1>🏭 ПАО «Нижнекамскнефтехим»<br><small>История гиганта нефтехимии</small></h1></header>
+
+<section>
+<h2>О компании</h2>
+<p class="description-text">ПАО «Нижнекамскнефтехим» — одно из крупнейших предприятий нефтехимической отрасли Европы, входит в состав СИБУРа. Завод выпускает синтетические каучуки, пластики, мономеры. История компании — это символ индустриального развития Татарстана.</p>
+
+<h2>📅 Ключевые этапы</h2>
+<p style="margin-bottom:1rem;">Нажмите на период, чтобы узнать подробности:</p>
+
+<div class="timeline">
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1960')">
+      <span>🚧 1960-е — Строительство гиганта</span>
+      <span class="period-arrow" id="arrow-1960">▶</span>
+    </button>
+    <div id="detail-1960" class="period-detail">
+      <p><strong>Ударная комсомольская стройка:</strong> В 1960 году принято решение о строительстве Нижнекамского нефтехимического комбината. В 1963 году заложен первый камень. В 1967 году пущен первый завод — по производству синтетического каучука (СКИ-3). В 1969 году получена первая продукция.</p>
+      <div class="detail-fact">✨ Интересный факт: стройку объявили всесоюзной ударной, сюда приезжали комсомольцы со всего СССР.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1970')">
+      <span>🏭 1970-е — Развитие мощностей</span>
+      <span class="period-arrow" id="arrow-1970">▶</span>
+    </button>
+    <div id="detail-1970" class="period-detail">
+      <p><strong>Эпоха пусков:</strong> Введены в строй заводы: дивинила, изопрена, этилена, полиэтилена, олигомеров. Комбинат становится крупнейшим в Европе производителем синтетических каучуков. В 1974 году создано производство стирола и полистирола. Численность работников достигает 15 тысяч.</p>
+      <div class="detail-fact">✨ Интересный факт: в 1978 году комбинат награжден орденом Ленина.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('1990')">
+      <span>📉 1990-е — Испытание рынком</span>
+      <span class="period-arrow" id="arrow-1990">▶</span>
+    </button>
+    <div id="detail-1990" class="period-detail">
+      <p><strong>Выживание и реструктуризация:</strong> В 1993 году комбинат преобразован в АО «Нижнекамскнефтехим». Предприятие пережило спад производства, но сохранило коллектив. В 1997 году запущена программа модернизации. К концу десятилетия объемы выросли на 40%.</p>
+      <div class="detail-fact">✨ Интересный факт: генеральный директор Н.В. Лемаев (с 1975 по 2000 гг.) сумел сохранить завод в кризис.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('2000')">
+      <span>📈 2000-е — Модернизация и рост</span>
+      <span class="period-arrow" id="arrow-2000">▶</span>
+    </button>
+    <div id="detail-2000" class="period-detail">
+      <p><strong>Технологическое обновление:</strong> Введены новые мощности по производству полипропилена, этиленгликоля, бутилкаучука. В 2007 году запущен комплекс этилена-1000. В 2010 году компания вошла в состав СИБУРа. Начато строительство ТАНЕКО (нефтепереработка).</p>
+      <div class="detail-fact">✨ Интересный факт: в 2008 году «Нижнекамскнефтехим» признан лучшим экспортером Татарстана.</div>
+    </div>
+  </div>
+
+  <div>
+    <button class="period-btn" onclick="togglePeriod('today')">
+      <span>🌟 Сегодня — Лидер отрасли</span>
+      <span class="period-arrow" id="arrow-today">▶</span>
+    </button>
+    <div id="detail-today" class="period-detail">
+      <p><strong>Современное предприятие:</strong> «Нижнекамскнефтехим» — флагман СИБУРа. Производственная мощность — более 1 млн тонн каучуков и 800 тыс. тонн пластиков в год. Реализуются проекты по глубокой переработке сырья. Компания активно внедряет принципы устойчивого развития (ESG).</p>
+      <div class="detail-fact">✨ Интересный факт: предприятие обеспечивает рабочими местами более 20 000 человек и формирует бюджет Нижнекамска на 70%.</div>
+    </div>
+  </div>
+</div>
+
+<a class="back" href="index.html">← На главную</a>
+</section>
+
+<script>
+  function togglePeriod(id) {
+    const detail = document.getElementById('detail-' + id);
+    const arrow = document.getElementById('arrow-' + id);
+    if (!detail || !arrow) return;
+    if (detail.classList.contains('show')) {
+      detail.classList.remove('show');
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      document.querySelectorAll('.period-detail').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.period-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+      detail.classList.add('show');
+      arrow.style.transform = 'rotate(90deg)';
+    }
+  }
+</script>
+</body>
+</html>
