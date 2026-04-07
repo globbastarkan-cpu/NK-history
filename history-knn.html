@@ -70,27 +70,49 @@ h2{
 .period-btn:active{background:#3a3a3a; transform:translateX(3px);}
 .period-arrow{font-size:1.2rem; transition:transform 0.2s;}
 .period-detail{
-  background:rgba(0,0,0,0.65);
+  position:relative;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   border-radius:16px;
   padding:0 1rem;
   max-height:0;
   overflow:hidden;
   transition:max-height 0.4s ease-out, padding 0.2s;
-  border-left:2px solid var(--burgundy);
+  border-left:2px solid var(--yellow);
   margin-bottom:0;
+  background-color: #1a1a1a;
+  min-height: 280px;
 }
+.period-detail::before{display:none;}
+.period-detail p, .period-detail .detail-fact {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px black;
+  backdrop-filter: blur(2px);
+}
+.period-detail p:last-child, .period-detail .detail-fact:last-child { margin-bottom: 0; }
+.period-detail strong { color: var(--yellow); }
 .period-detail.show{
-  max-height:500px;
+  max-height:700px;
   padding:1rem;
   margin-top:5px;
   margin-bottom:20px;
 }
 .detail-fact{
-  margin-top:0.8rem;
-  padding-top:0.8rem;
-  border-top:1px dashed var(--burgundy);
+  margin-top:0;
+  border-top: none;
   font-style:italic;
   color:var(--yellow);
+}
+img{
+  width:100%;
+  max-width:400px;
+  display:block;
+  margin:1.5rem auto;
+  border-radius:16px;
 }
 a.back{
   display:inline-block;
@@ -102,10 +124,16 @@ a.back{
   border-radius:40px;
   font-weight:bold;
 }
+/* Фоны для КНН */
+#detail-1963 { background-image: url('knn1963.jpg'); }
+#detail-1980 { background-image: url('knn1980.jpg'); }
+#detail-1995 { background-image: url('knn1995.jpg'); }
+#detail-2010 { background-image: url('knn2010.jpg'); }
+#detail-today { background-image: url('knntoday.jpg'); }
 </style>
 </head>
 <body>
-<header><h1>🏛️ История КНН<br><small>Колледж нефтехимии и нефтепереработки им. Н.В. Лемаева</small></h1></header>
+<header><h1>История КНН<br><small>Колледж нефтехимии и нефтепереработки им. Н.В. Лемаева</small></h1></header>
 
 <section>
 <h2>О колледже</h2>
