@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>История Нижнекамска — хроника</title>
+<title>История Нижнекамска — интерактивная хроника</title>
 <style>
 :root{
   --blue:#1677b3;
@@ -69,7 +69,10 @@ h2{
 .period-btn:active{background:#3a3a3a; transform:translateX(3px);}
 .period-arrow{font-size:1.2rem; transition:transform 0.2s;}
 .period-detail{
-  background:rgba(0,0,0,0.65);
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   border-radius:16px;
   padding:0 1rem;
   max-height:0;
@@ -78,16 +81,34 @@ h2{
   border-left:2px solid var(--yellow);
   margin-bottom:0;
 }
+/* Убираем глобальное затемнение через ::before */
+.period-detail::before{
+  display:none;
+}
+/* Делаем подложку только для текста */
+.period-detail p, .period-detail .detail-fact {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px black;
+  backdrop-filter: blur(2px); /* лёгкое размытие для улучшения читаемости */
+}
+.period-detail p:last-child, .period-detail .detail-fact:last-child {
+  margin-bottom: 0;
+}
+.period-detail strong {
+  color: var(--yellow);
+}
 .period-detail.show{
-  max-height:500px;
+  max-height:700px;
   padding:1rem;
   margin-top:5px;
   margin-bottom:20px;
 }
 .detail-fact{
-  margin-top:0.8rem;
-  padding-top:0.8rem;
-  border-top:1px dashed var(--blue);
+  margin-top:0;
+  border-top: none;
   font-style:italic;
   color:var(--yellow);
 }
@@ -107,6 +128,18 @@ a.back{
   padding:12px 28px;
   border-radius:40px;
   font-weight:bold;
+}
+
+/* Фоновые изображения для каждого периода (без затемнения) */
+#detail-1960 { background-image: url('1960.jpg'); }
+#detail-1970 { background-image: url('1970.jpg'); }
+#detail-1990 { background-image: url('1990.jpg'); }
+#detail-2000 { background-image: url('2000.jpg'); }
+#detail-today { background-image: url('today.jpg'); }
+
+/* Резервный фон на случай отсутствия фото */
+.period-detail {
+  background-color: #2a2a2a;
 }
 </style>
 </head>
@@ -134,7 +167,7 @@ a.back{
     </div>
   </div>
 
-<div>
+  <div>
     <button class="period-btn" onclick="togglePeriod('1970')">
       <span>🏗️ 1970-е — активное строительство и развитие</span>
       <span class="period-arrow" id="arrow-1970">▶</span>
@@ -183,20 +216,16 @@ a.back{
 </section>
 
 <script>
-  // Простая и надёжная функция переключения
   function togglePeriod(id) {
     const detail = document.getElementById('detail-' + id);
     const arrow = document.getElementById('arrow-' + id);
     if (!detail || !arrow) return;
-    
     if (detail.classList.contains('show')) {
       detail.classList.remove('show');
-arrow.style.transform = 'rotate(0deg)';
+      arrow.style.transform = 'rotate(0deg)';
     } else {
-      // Закрываем все другие открытые блоки
       document.querySelectorAll('.period-detail').forEach(d => d.classList.remove('show'));
       document.querySelectorAll('.period-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
-      // Открываем текущий
       detail.classList.add('show');
       arrow.style.transform = 'rotate(90deg)';
     }
